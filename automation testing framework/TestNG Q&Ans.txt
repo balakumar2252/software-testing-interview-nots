@@ -1,0 +1,246 @@
+TestNG
+1.Advantage of TestNG:
+ -->We can genrate default HTML report
+ -->We can change the order of @test Method by setting priotiy
+ -->We can achive paralle as well as cross browser execution
+ -->We can group our test case
+ -->We can pass bulck of test data with data provider
+ -->We can rerun failed testcase automatically
+
+2.How will you set priority for your Method:
+ -->Priority always execute from negative to postive
+ -->If two methods have same priority,it will execute based on Method asscending order
+ -->Default value of priority is Zero
+
+3.How will invoke a same method for more than one time?
+ --> By using invocationCount--> we can run a same method n number of times
+
+4.Tell the order of Annoation which u used in testNG
+  -->@BeforeSuite
+  -->@BeforeTest
+  -->@BeforeClass
+  -->@BeforeMethod
+  -->@Test
+  -->@AfterMethod
+  -->@AfterClass
+  -->@AfterTest
+  -->@AfterSuite
+
+5.How @Test anotation Methods will get Execute
+  -->@Test Methods annotatio will execute based on the method asscending order
+
+6.What is use of parameters?
+  -->Parameters are used to pass test data from suite level[testng.xml]
+  -->Parameters have two variable-->Name -->used to pass reference
+                                    value--> used to pass actual test data
+
+7.What is Data provider?
+  -->It is used to pass bluck of test data
+
+8.What is return type of Data provider?
+  -->Object [][]
+
+9.Write Syntax for data provider?
+ @DataProvider(name="")
+public Object[] [] getData(){
+
+return new Object[][]{
+
+};
+
+}
+
+10.Explain ur Suite file
+<suite>
+<test>
+<classes>
+<class name=""/>
+</classes>
+</test>
+</suite>
+
+11.How will you skip only one method from the execution
+ enable =false -->skip one method from the execution
+
+12.Consider i have 30 test case in that i need to execute only 10, how will you execute it?
+  --> We can apply concpet of groups
+  --> In Include we can apply the name which we want to execute.
+  --> In include what ever the we given that alone is going to execute.
+
+include --> Is used to execute only the specific group what we mention there
+exclude --> It will execute all other group, but it doesnot execute what we mention there.
+
+13.Difference between Assert and verify
+Assert -->Hard Assert
+-->When ever my assert conditon is getting failed,it will mark the method as failure and it wont execute remaing line of code. But it will execute other Methods
+ -->We can use Assert in all important fileds such us First name, emailId, cardno,cardtype,ccv,expMon,expYear
+
+SoftAssert-->Verify
+ -->Whenever my assert condition is getting failed it will not mark my method as failure it will print the next line of code on the same method
+ -->All methods in soft assert are non static--> we need to create object for calling SoftAssert methods
+
+14.How will you convert SoftAssert into Hard Assert
+   -->By using Method called assertAll()--> we can convert softAssert into Hard Assert.
+
+15.How will you achieve parallel execution in TestNG.
+We can achieve paralle execution by three ways
+ 1.Test level
+ 2.Class level
+ 3.Method level
+-->For performing paralle execution we need to convert class into suite level,In suite we need to mention either it is classs or method or test.based on thread count it run parallel.
+If class level -->For each class it will allocate a single thread
+If Test level -->For each Test it wiill allocate a single thread
+If Method level-->FOr each @Test Method in class it will allocate a single thead
+
+16.Sceario--> I have a Three methods,A B & C method name, condition If A pass then i need to execute B-->How will perofm it.
+  --> We need to apply dependsOnMethod [B method is going to depend On A]--I A is gettig pass alone B will get execute,If A get fails, B will get Skipped form the execution
+
+17.Same scenaario for grouping
+  -->For groupig we need to apply dependsOnGroups[B method is going to depend On A]--I A is gettig pass alone B will get execute,If A get fails, B will get Skipped form the execution
+
+18.Eventhough If My A methods get fails i needd to execute B method how will you perform it?[Note dependsOnMetho]
+   --> We need to apply AlwaysRun=true[Even though if A method gets fail, B will get execute, We need to apply AlwaysRun=true in Method B]
+@test
+public void A(){
+
+
+}
+
+@Test(dependsOnMethod="A",AlwaysRun=true)
+public void B(){
+
+}
+
+19.In Java We have finally block, like wise what we have testNG--->AlwaysRun
+
+20.How will you perform Rerun in TestNG
+  -->We can rerun in two ways 
+     1.Manual
+     2.Automation
+  Manual -->After execution we need to refresh the project->In the project folder--> we have naem called testout folder-->In that we have a file called testng-failed.xml
+We need to run the testng-failed.xml to perform rerun[It will execute only failed test mwthods]
+
+ Automation-->We need to convert classs into suite level-->In suite we need to add tag called listeners and listener--> in the we need to mention the class name.
+
+-->in the class we need to implements a interface called IAnnotationTranformer-->This classs is used to get all the result of @test.It will check if any @test is null -->It will redirect to next class for executionn
+
+-->In that class we need to implements a interface called IRetryAnalyzer -->We need to set the condition min and Max we need to execute it.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
